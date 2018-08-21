@@ -11,6 +11,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>E-mail</th>
+              <th>Created at</th>
               <th style="width: 128px">Actions</th>
             </tr>
           </thead>
@@ -20,6 +21,7 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
                 <td>
                   <a href="{{ url('/admin/users/edit/' . $user->id) }}" class="button is-primary">
                     <span class="icon is-small">

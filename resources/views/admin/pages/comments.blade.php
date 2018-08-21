@@ -12,6 +12,7 @@
               <th>Text</th>
               <th>User</th>
               <th>Image</th>
+              <th>Published</th>
               <th style="width: 128px">Actions</th>
             </tr>
           </thead>
@@ -30,6 +31,7 @@
                     {{ $comment->image->name }}
                   </a>
                 </td>
+                <td>{{ $comment->created_at->format('d/m/Y H:i:s') }}</td>
                 <td>
                   <a href="{{ url('/admin/comments/edit/' . $comment->id) }}" class="button is-primary">
                     <span class="icon is-small">
