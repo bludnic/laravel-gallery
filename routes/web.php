@@ -51,7 +51,8 @@ Route::middleware(['auth', 'auth.admin'])->group(function () {
   Route::get('/admin/users/delete/{id}', 'Admin\UserController@delete');
 });
 
-
+// Pages
+Route::get('/pages/disabled', 'PagesController@disabled');
 
 // Image pages
 Route::get('/', 'ImagesController@index');

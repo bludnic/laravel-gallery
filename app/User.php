@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable {
   use Notifiable;
@@ -28,5 +29,13 @@ class User extends Authenticatable {
 
   public function isSuperAdmin() {
     return $this->type === 'superadmin';
+  }
+
+  public function isBlocked() {
+    if ($this->blocked_on && Carbon::now() >= $this->blocked_on) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

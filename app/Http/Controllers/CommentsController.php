@@ -9,6 +9,8 @@ use App\Comment;
 class CommentsController extends Controller {
   public function __construct() {
     $this->middleware('auth');
+
+    $this->middleware('notBlocked');
   }
 
   public function create(Request $request, $id) {

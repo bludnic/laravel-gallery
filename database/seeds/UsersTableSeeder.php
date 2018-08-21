@@ -32,5 +32,16 @@ class UsersTableSeeder extends Seeder {
       'created_at' => $dateNow,
       'updated_at' => $dateNow
     ]);
+
+    DB::table('users')->insert([
+      'id' => 3,
+      'name' => 'blocked',
+      'email' => 'blocked@example.com',
+      'type' => 'user',
+      'blocked_on' => $dateNow,
+      'password' => bcrypt('secret'),
+      'created_at' => $dateNow,
+      'updated_at' => $dateNow
+    ]);
   }
 }

@@ -21,6 +21,14 @@ class ImagesController extends Controller {
         'delete'
       ]
     ]);
+
+    $this->middleware('notBlocked', [
+      'only' => [
+        'create',
+        'update',
+        'delete'
+      ]
+    ]);
   }
 
   public function index() {
