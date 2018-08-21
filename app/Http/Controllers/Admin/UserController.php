@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\User;
 
 class UserController extends Controller {
@@ -46,13 +47,15 @@ class UserController extends Controller {
   public function update(Request $request, $id) {
     $this->validate($request, [
       'name' => 'required|max:20',
-      'email' => 'required|unique:users|email',
-      'password' => 'confirmed|min:8|max:40',
+      'email' => 'required|email|unique:users,email,' . $id,
+      'password' => 'confirmed|max:40',
     ]);
 
+    $blockedOn = $request->get('blocked') == 'on' ? Carbon::now() : null;
     $user = User::findOrFail($id);
     $user->name = $request->get('name');
     $user->email = $request->get('email');
+    $user->blocked_on = $blockedOn;
 
     if (!empty($request->get('password'))) {
       $user->password = bcrypt($request->get('password'));

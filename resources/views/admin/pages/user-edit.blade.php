@@ -61,6 +61,18 @@
 
           <div class="field">
             <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" name="blocked" {{ $user->blocked_on ? 'checked' : '' }}>
+                Banned
+              </label>
+            </div>
+            @if ($errors->has('private'))
+              <p class="help is-danger">{{ $errors->first('blocked') }}</p>
+            @endif
+          </div>
+
+          <div class="field">
+            <div class="control">
               <button class="button is-link" type="submit">Update</button>
             </div>
           </div>
