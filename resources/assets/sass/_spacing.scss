@@ -1,0 +1,87 @@
+/*
+ * Margin & Padding helpers.
+ */
+
+$padding: 32;
+$paddings: (
+  '0': 0,
+  '1': 0.25,
+  '2': 0.5,
+  '3': 1,
+  '4': 1.5,
+  '5': 3
+);
+
+// Margins
+@each $key, $value in $paddings {
+  .ma-#{$key} {
+    margin: #{$value * $padding}px !important;
+  }
+  
+  .mt-#{$key} {
+    margin-top: #{$value * $padding}px !important;
+  }
+  
+  .mr-#{$key} {
+    margin-right: #{$value * $padding}px !important;
+  }
+  
+  .mb-#{$key} {
+    margin-bottom: #{$value * $padding}px !important;
+  }
+  
+  .ml-#{$key} {
+    margin-left: #{$value * $padding}px !important;
+  }
+  
+  .mx-#{$key} {
+    margin-left: #{$value * $padding}px !important;
+    margin-right: #{$value * $padding}px !important;
+  }
+  
+  .my-#{$key} {
+    margin-top: #{$value * $padding}px !important;
+    margin-bottom: #{$value * $padding}px !important;
+  }
+}
+
+// Paddings
+@each $key, $value in $paddings {
+  .pa-#{$key} {
+    padding: #{$value * $padding}px !important;
+  }
+  
+  .pt-#{$key} {
+    padding-top: #{$value * $padding}px !important;
+  }
+  
+  .pr-#{$key} {
+    padding-right: #{$value * $padding}px !important;
+  }
+  
+  .pb-#{$key} {
+    padding-bottom: #{$value * $padding}px !important;
+  }
+  
+  .pl-#{$key} {
+    padding-left: #{$value * $padding}px !important;
+  }
+  
+  .px-#{$key} {
+    padding-left: #{$value * $padding}px !important;
+    padding-right: #{$value * $padding}px !important;
+  }
+  
+  .py-#{$key} {
+    padding-top: #{$value * $padding}px !important;
+    padding-bottom: #{$value * $padding}px !important;
+  }
+}
+
+/*
+ * Other helpers.
+ */
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
