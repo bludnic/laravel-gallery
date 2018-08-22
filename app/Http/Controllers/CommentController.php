@@ -6,10 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Comment;
 
-class CommentsController extends Controller {
+class CommentController extends Controller {
   public function __construct() {
     $this->middleware('auth');
-
     $this->middleware('notBlocked');
   }
 

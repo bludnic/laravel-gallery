@@ -51,21 +51,19 @@ Route::middleware(['auth', 'auth.admin'])->group(function () {
   Route::get('/admin/users/delete/{id}', 'Admin\UserController@delete');
 });
 
-// Pages
-Route::get('/pages/disabled', 'PagesController@disabled');
+// ImageController
+Route::get('/', 'ImageController@index');
+Route::get('/image/upload', 'ImageController@renderImageForm');
+Route::get('/image/{id}', 'ImageController@renderImagePage');
+Route::get('/images/my', 'ImageController@renderMyImagesPage')->name('my-images');
+Route::get('/images/category/{id}', 'ImageController@renderImagesByCategoryPage');
+Route::post('/image/create', 'ImageController@create');
+Route::post('/image/update/{id}', 'ImageController@update');
+Route::get('/image/delete/{id}', 'ImageController@delete');
 
-// Image pages
-Route::get('/', 'ImagesController@index');
-Route::get('/image/upload', 'ImagesController@renderImageForm');
-Route::get('/image/{id}', 'ImagesController@renderImagePage');
-Route::get('/images/my', 'ImagesController@renderMyImagesPage')->name('my-images');
-Route::get('/images/category/{id}', 'ImagesController@renderImagesByCategoryPage');
+// CommentController
+Route::post('/comment/{id}', 'CommentController@create');
+Route::get('/comment/delete/{id}', 'CommentController@delete');
 
-// Image actions
-Route::post('/image/create', 'ImagesController@create');
-Route::post('/image/update/{id}', 'ImagesController@update');
-Route::get('/image/delete/{id}', 'ImagesController@delete');
-
-// Comments actions
-Route::post('/comment/{id}', 'CommentsController@create');
-Route::get('/comment/delete/{id}', 'CommentsController@delete');
+// PageController
+Route::get('/pages/disabled', 'PageController@disabled');

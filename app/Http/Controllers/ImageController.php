@@ -10,7 +10,7 @@ use App\Category;
 use App\Image;
 use App\Comment;
 
-class ImagesController extends Controller {
+class ImageController extends Controller {
   public function __construct() {
     $this->middleware('auth', [
       'only' => [
@@ -24,6 +24,8 @@ class ImagesController extends Controller {
 
     $this->middleware('notBlocked', [
       'only' => [
+        'renderMyImagesPage',
+        'renderImageForm',
         'create',
         'update',
         'delete'
@@ -75,7 +77,6 @@ class ImagesController extends Controller {
   }
 
   public function create(Request $request) {
-    // Validation
     $this->validate($request, [
       'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=640,min_height=360',
       'description' => 'required|max:255',
@@ -83,7 +84,6 @@ class ImagesController extends Controller {
       'user_id' => 'exists:users,id'
     ]);
 
-    // Save file to uploads/img
     $fileName = $this->_saveImage();
 
     $private = $request->get('private') == 'on' ? 1 : 0;
